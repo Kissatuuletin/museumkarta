@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="css/MarkerCluster.css">
+        <link rel="stylesheet" href="css/MarkerCluster.Default.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="js/leaflet.wms.js"></script>
+        <script src="js/leaflet.markercluster.js"></script>
+        <script src="data/Fornlamning_polygon_1.js"></script>
+        <script src="data/fornlamning_punktergjordaavpolygon_2.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:19, minZoom:11
+        }).fitBounds([[57.01772888961267,10.364577188955947],[58.32909857375426,13.62412206373541]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+            map.setMaxBounds(map.getBounds());
+        }
+        map.createPane('pane_Stadskarta_0');
+        map.getPane('pane_Stadskarta_0').style.zIndex = 400;
+        var layer_Stadskarta_0 = L.WMS.layer("https://opengeodata.goteborg.se/services/stadskarta/wms/v4", "stadskarta", {
+            pane: 'pane_Stadskarta_0',
+            format: 'image/png',
+            uppercase: true,
+            transparent: true,
+            continuousWorld : true,
+            tiled: true,
+            info_format: 'text/html',
+            opacity: 1,
+            identify: false,
+            attribution: '',
+        });
+        map.addLayer(layer_Stadskarta_0);
+        function pop_Fornlamning_polygon_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>QGIS Rapporter — Rapporter_Grävningsår</strong><br />' + (feature.properties['QGIS Rapporter — Rapporter_Grävningsår'] !== null ? autolinker.link(feature.properties['QGIS Rapporter — Rapporter_Grävningsår'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">QGIS Rapporter — Rapporter_Rapportbeteckning</th>\
+                        <td>' + (feature.properties['QGIS Rapporter — Rapporter_Rapportbeteckning'] !== null ? autolinker.link(feature.properties['QGIS Rapporter — Rapporter_Rapportbeteckning'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">QGIS Rapporter — Rapporter_Rapportens_huvudtitel</th>\
+                        <td>' + (feature.properties['QGIS Rapporter — Rapporter_Rapportens_huvudtitel'] !== null ? autolinker.link(feature.properties['QGIS Rapporter — Rapporter_Rapportens_huvudtitel'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">QGIS Rapporter — Rapporter_Rapportförfattare</th>\
+                        <td>' + (feature.properties['QGIS Rapporter — Rapporter_Rapportförfattare'] !== null ? autolinker.link(feature.properties['QGIS Rapporter — Rapporter_Rapportförfattare'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>QGIS Rapporter — Rapporter_PDF Carlotta</strong><br />' + (feature.properties['QGIS Rapporter — Rapporter_PDF Carlotta'] !== null ? autolinker.link(feature.properties['QGIS Rapporter — Rapporter_PDF Carlotta'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Fornlamning_polygon_1_0() {
+            return {
+                pane: 'pane_Fornlamning_polygon_1',
+                opacity: 1,
+                color: 'rgba(128,14,16,0.6)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(226,97,100,0.6)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Fornlamning_polygon_1');
+        map.getPane('pane_Fornlamning_polygon_1').style.zIndex = 401;
+        map.getPane('pane_Fornlamning_polygon_1').style['mix-blend-mode'] = 'normal';
+        var layer_Fornlamning_polygon_1 = new L.geoJson(json_Fornlamning_polygon_1, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Fornlamning_polygon_1',
+            layerName: 'layer_Fornlamning_polygon_1',
+            pane: 'pane_Fornlamning_polygon_1',
+            onEachFeature: pop_Fornlamning_polygon_1,
+            style: style_Fornlamning_polygon_1_0,
+        });
+        bounds_group.addLayer(layer_Fornlamning_polygon_1);
+        map.addLayer(layer_Fornlamning_polygon_1);
+        function pop_fornlamning_punktergjordaavpolygon_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['QGIS Rapporter — Rapporter_Grävningsår'] !== null ? autolinker.link(feature.properties['QGIS Rapporter — Rapporter_Grävningsår'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['QGIS Rapporter — Rapporter_Rapportbeteckning'] !== null ? autolinker.link(feature.properties['QGIS Rapporter — Rapporter_Rapportbeteckning'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['QGIS Rapporter — Rapporter_Rapportens_huvudtitel'] !== null ? autolinker.link(feature.properties['QGIS Rapporter — Rapporter_Rapportens_huvudtitel'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['QGIS Rapporter — Rapporter_Rapportförfattare'] !== null ? autolinker.link(feature.properties['QGIS Rapporter — Rapporter_Rapportförfattare'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>QGIS Rapporter — Rapporter_PDF Carlotta</strong><br />' + (feature.properties['QGIS Rapporter — Rapporter_PDF Carlotta'] !== null ? autolinker.link(feature.properties['QGIS Rapporter — Rapporter_PDF Carlotta'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_fornlamning_punktergjordaavpolygon_2_0() {
+            return {
+                pane: 'pane_fornlamning_punktergjordaavpolygon_2',
+                radius: 5.2,
+                opacity: 1,
+                color: 'rgba(128,17,25,0.8)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,162,0,0.8)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_fornlamning_punktergjordaavpolygon_2');
+        map.getPane('pane_fornlamning_punktergjordaavpolygon_2').style.zIndex = 402;
+        map.getPane('pane_fornlamning_punktergjordaavpolygon_2').style['mix-blend-mode'] = 'normal';
+        var layer_fornlamning_punktergjordaavpolygon_2 = new L.geoJson(json_fornlamning_punktergjordaavpolygon_2, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_fornlamning_punktergjordaavpolygon_2',
+            layerName: 'layer_fornlamning_punktergjordaavpolygon_2',
+            pane: 'pane_fornlamning_punktergjordaavpolygon_2',
+            onEachFeature: pop_fornlamning_punktergjordaavpolygon_2,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_fornlamning_punktergjordaavpolygon_2_0(feature));
+            },
+        });
+        var cluster_fornlamning_punktergjordaavpolygon_2 = new L.MarkerClusterGroup({showCoverageOnHover: false,
+            spiderfyDistanceMultiplier: 2});
+        cluster_fornlamning_punktergjordaavpolygon_2.addLayer(layer_fornlamning_punktergjordaavpolygon_2);
+
+        bounds_group.addLayer(layer_fornlamning_punktergjordaavpolygon_2);
+        cluster_fornlamning_punktergjordaavpolygon_2.addTo(map);
+        map.on("zoomend", function(e) {
+            if (map.getZoom() <= 19 && map.getZoom() >= 16) {
+                map.addLayer(layer_Fornlamning_polygon_1);
+            } else if (map.getZoom() > 19 || map.getZoom() < 16) {
+                map.removeLayer(layer_Fornlamning_polygon_1);
+            }
+            if (map.getZoom() <= 15 && map.getZoom() >= 8) {
+                map.addLayer(cluster_fornlamning_punktergjordaavpolygon_2);
+            } else if (map.getZoom() > 15 || map.getZoom() < 8) {
+                map.removeLayer(cluster_fornlamning_punktergjordaavpolygon_2);
+            }
+        });
+            if (map.getZoom() <= 19 && map.getZoom() >= 16) {
+                map.addLayer(layer_Fornlamning_polygon_1);
+            } else if (map.getZoom() > 19 || map.getZoom() < 16) {
+                map.removeLayer(layer_Fornlamning_polygon_1);
+            }
+            if (map.getZoom() <= 15 && map.getZoom() >= 8) {
+                map.addLayer(cluster_fornlamning_punktergjordaavpolygon_2);
+            } else if (map.getZoom() > 15 || map.getZoom() < 8) {
+                map.removeLayer(cluster_fornlamning_punktergjordaavpolygon_2);
+            }
+        setBounds();
+        </script>
+    </body>
+</html>
