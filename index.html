@@ -37,21 +37,6 @@
         <script src="data/Arkeologiskarapporter_1.js"></script>
         <script src="data/Bebyggelserapporter_2.js"></script>
         <script>
-        var highlightLayer;
-        function highlightFeature(e) {
-            highlightLayer = e.target;
-
-            if (e.target.feature.geometry.type === 'LineString') {
-              highlightLayer.setStyle({
-                color: '#ffff00',
-              });
-            } else {
-              highlightLayer.setStyle({
-                fillColor: '#ffff00',
-                fillOpacity: 1
-              });
-            }
-        }
         var map = L.map('map', {
             zoomControl:true, maxZoom:18, minZoom:11
         })
@@ -80,14 +65,6 @@
         });
         map.addLayer(layer_Stadskarta_0);
         function pop_Arkeologiskarapporter_1(feature, layer) {
-            layer.on({
-                mouseout: function(e) {
-                    for (i in e.target._eventParents) {
-                        e.target._eventParents[i].resetStyle(e.target);
-                    }
-                },
-                mouseover: highlightFeature,
-            });
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2"><strong>Datering</strong><br />' + (feature.properties['QGIS Rapporter — Rapporter_Datering hela fornl'] !== null ? autolinker.link(feature.properties['QGIS Rapporter — Rapporter_Datering hela fornl'].toLocaleString()) : '') + '</td>\
@@ -149,14 +126,6 @@
         bounds_group.addLayer(layer_Arkeologiskarapporter_1);
         cluster_Arkeologiskarapporter_1.addTo(map);
         function pop_Bebyggelserapporter_2(feature, layer) {
-            layer.on({
-                mouseout: function(e) {
-                    for (i in e.target._eventParents) {
-                        e.target._eventParents[i].resetStyle(e.target);
-                    }
-                },
-                mouseover: highlightFeature,
-            });
             var popupContent = '<table>\
                     <tr>\
                         <th scope="row">Rapport ID</th>\
