@@ -39,7 +39,7 @@
         <script src="data/Bebyggelserapporterexport_3.js"></script>
         <script>
         var map = L.map('map', {
-            zoomControl:true, maxZoom:18, minZoom:11
+            zoomControl:true, maxZoom:18, minZoom:10
         })
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
@@ -101,16 +101,16 @@
         function style_Arkeologiskarapporter_2_0() {
             return {
                 pane: 'pane_Arkeologiskarapporter_2',
-                radius: 7.6,
+                radius: 7.2,
                 opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
+                color: 'rgba(14,86,87,1.0)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
                 weight: 2.0,
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(17,144,207,1.0)',
+                fillColor: 'rgba(105,224,198,1.0)',
                 interactive: true,
             }
         }
@@ -157,16 +157,16 @@
             return {
                 pane: 'pane_Bebyggelserapporterexport_3',
                 shape: 'triangle',
-                radius: 8.0,
+                radius: 8.4,
                 opacity: 1,
-                color: 'rgba(0,0,0,1.0)',
+                color: 'rgba(14,86,87,1.0)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
                 weight: 2.0,
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(242,210,52,1.0)',
+                fillColor: 'rgba(251,238,102,1.0)',
                 interactive: true,
             }
         }
