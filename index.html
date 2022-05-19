@@ -6,7 +6,7 @@
         <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-capable" content="yes">
-        <link rel="stylesheet" href="css/leaflet.css"><link rel="stylesheet" href="css/L.Control.Locate.min.css">
+        <link rel="stylesheet" href="css/leaflet.css">
         <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
         <link rel="stylesheet" href="css/MarkerCluster.css">
         <link rel="stylesheet" href="css/MarkerCluster.Default.css">
@@ -25,7 +25,7 @@
         <div id="map">
         </div>
         <script src="js/qgis2web_expressions.js"></script>
-        <script src="js/leaflet.js"></script><script src="js/L.Control.Locate.min.js"></script>
+        <script src="js/leaflet.js"></script>
         <script src="js/leaflet-svg-shape-markers.min.js"></script>
         <script src="js/leaflet.rotatedMarker.js"></script>
         <script src="js/leaflet.pattern.js"></script>
@@ -37,21 +37,17 @@
         <script src="js/leaflet.wms.js"></script>
         <script src="js/leaflet.markercluster.js"></script>
         <script src="js/leaflet-search.js"></script>
-        <script src="data/Arkeologiskarapporter_1.js"></script>
-        <script src="data/Bebyggelserapporterexport_2.js"></script>
+        <script src="data/Arkeologiskarapporterdubbletterborttagna_1.js"></script>
+        <script src="data/Bebyggelserapporterihopslagenattribut_2.js"></script>
         <script>
         var map = L.map('map', {
-            zoomControl:true, maxZoom:18, minZoom:10
-        })
+            zoomControl:true, maxZoom:19, minZoom:10
+        }).fitBounds([[57.560267354959066,11.554045870560918],[57.861138321910985,12.35173970403246]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
-        L.control.locate({locateOptions: {maxZoom: 19}}).addTo(map);
         var bounds_group = new L.featureGroup([]);
         function setBounds() {
-            if (bounds_group.getLayers().length) {
-                map.fitBounds(bounds_group.getBounds());
-            }
         }
         map.createPane('pane_Stadskartanedtonad_0');
         map.getPane('pane_Stadskartanedtonad_0').style.zIndex = 400;
@@ -68,7 +64,7 @@
             attribution: '',
         });
         map.addLayer(layer_Stadskartanedtonad_0);
-        function pop_Arkeologiskarapporter_1(feature, layer) {
+        function pop_Arkeologiskarapporterdubbletterborttagna_1(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2"><strong>Fornlämningsnummer</strong><br />' + (feature.properties['Fornlnr'] !== null ? autolinker.link(feature.properties['Fornlnr'].toLocaleString()) : '') + '</td>\
@@ -86,9 +82,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_Arkeologiskarapporter_1_0() {
+        function style_Arkeologiskarapporterdubbletterborttagna_1_0() {
             return {
-                pane: 'pane_Arkeologiskarapporter_1',
+                pane: 'pane_Arkeologiskarapporterdubbletterborttagna_1',
                 radius: 9.2,
                 opacity: 1,
                 color: 'rgba(105,224,198,1.0)',
@@ -102,31 +98,31 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_Arkeologiskarapporter_1');
-        map.getPane('pane_Arkeologiskarapporter_1').style.zIndex = 401;
-        map.getPane('pane_Arkeologiskarapporter_1').style['mix-blend-mode'] = 'normal';
-        var layer_Arkeologiskarapporter_1 = new L.geoJson(json_Arkeologiskarapporter_1, {
+        map.createPane('pane_Arkeologiskarapporterdubbletterborttagna_1');
+        map.getPane('pane_Arkeologiskarapporterdubbletterborttagna_1').style.zIndex = 401;
+        map.getPane('pane_Arkeologiskarapporterdubbletterborttagna_1').style['mix-blend-mode'] = 'normal';
+        var layer_Arkeologiskarapporterdubbletterborttagna_1 = new L.geoJson(json_Arkeologiskarapporterdubbletterborttagna_1, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Arkeologiskarapporter_1',
-            layerName: 'layer_Arkeologiskarapporter_1',
-            pane: 'pane_Arkeologiskarapporter_1',
-            onEachFeature: pop_Arkeologiskarapporter_1,
+            dataVar: 'json_Arkeologiskarapporterdubbletterborttagna_1',
+            layerName: 'layer_Arkeologiskarapporterdubbletterborttagna_1',
+            pane: 'pane_Arkeologiskarapporterdubbletterborttagna_1',
+            onEachFeature: pop_Arkeologiskarapporterdubbletterborttagna_1,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.circleMarker(latlng, style_Arkeologiskarapporter_1_0(feature));
+                return L.circleMarker(latlng, style_Arkeologiskarapporterdubbletterborttagna_1_0(feature));
             },
         });
-        var cluster_Arkeologiskarapporter_1 = new L.MarkerClusterGroup({showCoverageOnHover: false,
+        var cluster_Arkeologiskarapporterdubbletterborttagna_1 = new L.MarkerClusterGroup({showCoverageOnHover: false,
             spiderfyDistanceMultiplier: 2});
-        cluster_Arkeologiskarapporter_1.addLayer(layer_Arkeologiskarapporter_1);
+        cluster_Arkeologiskarapporterdubbletterborttagna_1.addLayer(layer_Arkeologiskarapporterdubbletterborttagna_1);
 
-        bounds_group.addLayer(layer_Arkeologiskarapporter_1);
-        cluster_Arkeologiskarapporter_1.addTo(map);
-        function pop_Bebyggelserapporterexport_2(feature, layer) {
+        bounds_group.addLayer(layer_Arkeologiskarapporterdubbletterborttagna_1);
+        cluster_Arkeologiskarapporterdubbletterborttagna_1.addTo(map);
+        function pop_Bebyggelserapporterihopslagenattribut_2(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2"><strong>Rapport ID</strong><br />' + (feature.properties['Bebyggelse'] !== null ? autolinker.link(feature.properties['Bebyggelse'].toLocaleString()) : '') + '</td>\
@@ -141,9 +137,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_Bebyggelserapporterexport_2_0() {
+        function style_Bebyggelserapporterihopslagenattribut_2_0() {
             return {
-                pane: 'pane_Bebyggelserapporterexport_2',
+                pane: 'pane_Bebyggelserapporterihopslagenattribut_2',
                 shape: 'triangle',
                 radius: 9.6,
                 opacity: 1,
@@ -158,35 +154,33 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_Bebyggelserapporterexport_2');
-        map.getPane('pane_Bebyggelserapporterexport_2').style.zIndex = 402;
-        map.getPane('pane_Bebyggelserapporterexport_2').style['mix-blend-mode'] = 'normal';
-        var layer_Bebyggelserapporterexport_2 = new L.geoJson(json_Bebyggelserapporterexport_2, {
+        map.createPane('pane_Bebyggelserapporterihopslagenattribut_2');
+        map.getPane('pane_Bebyggelserapporterihopslagenattribut_2').style.zIndex = 402;
+        map.getPane('pane_Bebyggelserapporterihopslagenattribut_2').style['mix-blend-mode'] = 'normal';
+        var layer_Bebyggelserapporterihopslagenattribut_2 = new L.geoJson(json_Bebyggelserapporterihopslagenattribut_2, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Bebyggelserapporterexport_2',
-            layerName: 'layer_Bebyggelserapporterexport_2',
-            pane: 'pane_Bebyggelserapporterexport_2',
-            onEachFeature: pop_Bebyggelserapporterexport_2,
+            dataVar: 'json_Bebyggelserapporterihopslagenattribut_2',
+            layerName: 'layer_Bebyggelserapporterihopslagenattribut_2',
+            pane: 'pane_Bebyggelserapporterihopslagenattribut_2',
+            onEachFeature: pop_Bebyggelserapporterihopslagenattribut_2,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.shapeMarker(latlng, style_Bebyggelserapporterexport_2_0(feature));
+                return L.shapeMarker(latlng, style_Bebyggelserapporterihopslagenattribut_2_0(feature));
             },
         });
-        var cluster_Bebyggelserapporterexport_2 = new L.MarkerClusterGroup({showCoverageOnHover: false,
+        var cluster_Bebyggelserapporterihopslagenattribut_2 = new L.MarkerClusterGroup({showCoverageOnHover: false,
             spiderfyDistanceMultiplier: 2});
-        cluster_Bebyggelserapporterexport_2.addLayer(layer_Bebyggelserapporterexport_2);
+        cluster_Bebyggelserapporterihopslagenattribut_2.addLayer(layer_Bebyggelserapporterihopslagenattribut_2);
 
-        bounds_group.addLayer(layer_Bebyggelserapporterexport_2);
-        cluster_Bebyggelserapporterexport_2.addTo(map);
-        var baseMaps = {};
-        L.control.layers(baseMaps,{'<img src="legend/Bebyggelserapporterexport_2.png" /> Bebyggelserapporter export': cluster_Bebyggelserapporterexport_2,'<img src="legend/Arkeologiskarapporter_1.png" /> Arkeologiska rapporter': cluster_Arkeologiskarapporter_1,"Stadskarta nedtonad": layer_Stadskartanedtonad_0,}).addTo(map);
+        bounds_group.addLayer(layer_Bebyggelserapporterihopslagenattribut_2);
+        cluster_Bebyggelserapporterihopslagenattribut_2.addTo(map);
         setBounds();
         map.addControl(new L.Control.Search({
-            layer: cluster_Arkeologiskarapporter_1,
+            layer: cluster_Arkeologiskarapporterdubbletterborttagna_1,
             initial: false,
             hideMarkerOnCollapse: true,
             propertyName: 'QGIS Rapporter — Rapporter_Rapportens_huvudtitel'}));
