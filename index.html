@@ -70,35 +70,7 @@
         var bounds_group = new L.featureGroup([]);
         function setBounds() {
         }
-        map.createPane('pane_Stadskartanedtonad_0');
-        map.getPane('pane_Stadskartanedtonad_0').style.zIndex = 400;
-        var layer_Stadskartanedtonad_0 = L.WMS.layer("https://opengeodata.goteborg.se/services/stadskarta/wms/v4", "stadskarta_nedtonad", {
-            pane: 'pane_Stadskartanedtonad_0',
-            format: 'image/png',
-            uppercase: true,
-            transparent: true,
-            continuousWorld : true,
-            tiled: true,
-            info_format: 'text/html',
-            opacity: 1,
-            identify: false,
-            attribution: '',
-        });
-        map.addLayer(layer_Stadskartanedtonad_0);
-        function pop_Bebyggelserapporterihopslagenattribut_1(feature, layer) {
-            var popupContent = '<table>\
-                    <tr>\
-                        <td colspan="2"><strong>Rapport ID</strong><br />' + (feature.properties['Bebyggelse'] !== null ? autolinker.link(feature.properties['Bebyggelse'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2"><strong>Titel</strong><br />' + (feature.properties['Bebyggel_2'] !== null ? autolinker.link(feature.properties['Bebyggel_2'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2"><strong>Länk till rapport</strong><br />' + (feature.properties['Bebyggel_9'] !== null ? autolinker.link(feature.properties['Bebyggel_9'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
-        }
+
 
         function style_Bebyggelserapporterihopslagenattribut_1_0() {
             return {
@@ -135,7 +107,7 @@
                 return L.shapeMarker(latlng, style_Bebyggelserapporterihopslagenattribut_1_0(feature));
             },
         });
-        var cluster_Bebyggelserapporterihopslagenattribut_1 = new L.MarkerClusterGroup({showCoverageOnHover: false,
+        var cluster_Bebyggelserapporterihopslagenattribut_1 = new L.MarkerClusterGroup({showCoverageOnHover: true,
             spiderfyDistanceMultiplier: 2});
         cluster_Bebyggelserapporterihopslagenattribut_1.addLayer(layer_Bebyggelserapporterihopslagenattribut_1);
 
@@ -202,12 +174,41 @@
                 return L.circleMarker(latlng, style_Arkeologiskarapportermatchadeshape_2_0(feature));
             },
         });
-        var cluster_Arkeologiskarapportermatchadeshape_2 = new L.MarkerClusterGroup({showCoverageOnHover: false,
+        var cluster_Arkeologiskarapportermatchadeshape_2 = new L.MarkerClusterGroup({showCoverageOnHover: true,
             spiderfyDistanceMultiplier: 2});
         cluster_Arkeologiskarapportermatchadeshape_2.addLayer(layer_Arkeologiskarapportermatchadeshape_2);
 
         bounds_group.addLayer(layer_Arkeologiskarapportermatchadeshape_2);
         cluster_Arkeologiskarapportermatchadeshape_2.addTo(map);
+        map.createPane('pane_Stadskartanedtonad_0');
+        map.getPane('pane_Stadskartanedtonad_0').style.zIndex = 400;
+        var layer_Stadskartanedtonad_0 = L.WMS.layer("https://opengeodata.goteborg.se/services/stadskarta/wms/v4", "stadskarta_nedtonad", {
+            pane: 'pane_Stadskartanedtonad_0',
+            format: 'image/png',
+            uppercase: true,
+            transparent: true,
+            continuousWorld : true,
+            tiled: true,
+            info_format: 'text/html',
+            opacity: 1,
+            identify: false,
+            attribution: '',
+        });
+        map.addLayer(layer_Stadskartanedtonad_0);
+        function pop_Bebyggelserapporterihopslagenattribut_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Rapport ID</strong><br />' + (feature.properties['Bebyggelse'] !== null ? autolinker.link(feature.properties['Bebyggelse'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Titel</strong><br />' + (feature.properties['Bebyggel_2'] !== null ? autolinker.link(feature.properties['Bebyggel_2'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Länk till rapport</strong><br />' + (feature.properties['Bebyggel_9'] !== null ? autolinker.link(feature.properties['Bebyggel_9'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
         var baseMaps = {};
         L.control.layers(baseMaps,{'<img src="legend/Arkeologiskarapportermatchadeshape_2.png" /> Arkeologiska rapporter matchade shape': cluster_Arkeologiskarapportermatchadeshape_2,'<img src="legend/Bebyggelserapporterihopslagenattribut_1.png" /> Bebyggelserapporter ihopslagen attribut': cluster_Bebyggelserapporterihopslagenattribut_1,"Stadskarta nedtonad": layer_Stadskartanedtonad_0,}).addTo(map);
         setBounds();
