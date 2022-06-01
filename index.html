@@ -10,7 +10,6 @@
         <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
         <link rel="stylesheet" href="css/MarkerCluster.css">
         <link rel="stylesheet" href="css/MarkerCluster.Default.css">
-        <link rel="stylesheet" href="css/leaflet-search.css">
         <link rel="stylesheet" href="css/leaflet-measure.css">
         <style>
         html, body, #map {
@@ -40,7 +39,6 @@
         <script src="js/proj4.js"></script>
         <script src="js/proj4leaflet.js"></script>
         <script src="js/leaflet.markercluster.js"></script>
-        <script src="js/leaflet-search.js"></script>
         <script src="data/Bebyggelserapporterihopslagenattribut_1.js"></script>
         <script src="data/Arkeologiskarapportermatchadeshape_2.js"></script>
         <script>
@@ -173,7 +171,7 @@
         function style_Arkeologiskarapportermatchadeshape_2_0() {
             return {
                 pane: 'pane_Arkeologiskarapportermatchadeshape_2',
-                radius: 7.2,
+                radius: 6.8,
                 opacity: 1,
                 color: 'rgba(29,64,102,1.0)',
                 dashArray: '',
@@ -182,7 +180,7 @@
                 weight: 3.0,
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(32,159,218,1.0)',
+                fillColor: 'rgba(16,163,231,1.0)',
                 interactive: true,
             }
         }
@@ -213,13 +211,6 @@
         var baseMaps = {};
         L.control.layers(baseMaps,{'<img src="legend/Arkeologiskarapportermatchadeshape_2.png" /> Arkeologiska rapporter matchade shape': cluster_Arkeologiskarapportermatchadeshape_2,'<img src="legend/Bebyggelserapporterihopslagenattribut_1.png" /> Bebyggelserapporter ihopslagen attribut': cluster_Bebyggelserapporterihopslagenattribut_1,"Stadskarta nedtonad": layer_Stadskartanedtonad_0,}).addTo(map);
         setBounds();
-        map.addControl(new L.Control.Search({
-            layer: cluster_Arkeologiskarapportermatchadeshape_2,
-            initial: false,
-            hideMarkerOnCollapse: true,
-            propertyName: 'QGIS Rap_9'}));
-        document.getElementsByClassName('search-button')[0].className +=
-         ' fa fa-binoculars';
         </script>
     </body>
 </html>
