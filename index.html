@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="css/MarkerCluster.Default.css">
         <link rel="stylesheet" href="css/leaflet-search.css">
         <link rel="stylesheet" href="css/leaflet-measure.css">
+        <link rel="stylesheet" href="src/AnimatedSearchBox.css">
         <style>
         html, body, #map {
             width: 100%;
@@ -43,6 +44,7 @@
         <script src="js/leaflet-search.js"></script>
         <script src="data/Arkeologiskarapporter_1.js"></script>
         <script src="data/Bebyggelserapporter_2.js"></script>
+        <script src="src/AnimatedSearchBox.js"></script>
         <script>
         var crs = new L.Proj.CRS('EPSG:3006', '+proj=utm +zone=33 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs', {
             resolutions: [2800, 1400, 700, 350, 175, 84, 42, 21, 11.2, 5.6, 2.8, 1.4, 0.7, 0.35, 0.14, 0.07],
@@ -64,6 +66,7 @@
             primaryAreaUnit: 'sqmeters',
             secondaryAreaUnit: 'hectares'
         });
+        
         measureControl.addTo(map);
         document.getElementsByClassName('leaflet-control-measure-toggle')[0]
         .innerHTML = '';
@@ -86,6 +89,7 @@
             identify: false,
             attribution: '',
         });
+
         map.addLayer(layer_Stadskarta_0);
         function pop_Arkeologiskarapporter_1(feature, layer) {
             var popupContent = '<table>\
@@ -139,6 +143,7 @@
                 return L.circleMarker(latlng, style_Arkeologiskarapporter_1_0(feature));
             },
         });
+        
         var cluster_Arkeologiskarapporter_1 = new L.MarkerClusterGroup({showCoverageOnHover: true,
             spiderfyDistanceMultiplier: 2});
         cluster_Arkeologiskarapporter_1.addLayer(layer_Arkeologiskarapporter_1);
