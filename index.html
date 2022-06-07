@@ -12,7 +12,6 @@
         <link rel="stylesheet" href="css/MarkerCluster.Default.css">
         <link rel="stylesheet" href="css/leaflet-search.css">
         <link rel="stylesheet" href="css/leaflet-measure.css">
-        <link rel="stylesheet" href="src/AnimatedSearchBox.css">
         <style>
         html, body, #map {
             width: 100%;
@@ -44,7 +43,6 @@
         <script src="js/leaflet-search.js"></script>
         <script src="data/Arkeologiskarapporter_1.js"></script>
         <script src="data/Bebyggelserapporter_2.js"></script>
-        <script src="src/AnimatedSearchBox.js"></script>
         <script>
         var crs = new L.Proj.CRS('EPSG:3006', '+proj=utm +zone=33 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs', {
             resolutions: [2800, 1400, 700, 350, 175, 84, 42, 21, 11.2, 5.6, 2.8, 1.4, 0.7, 0.35, 0.14, 0.07],
@@ -54,7 +52,7 @@
             continuousWorld: false,
             worldCopyJump: false, 
             zoomControl:true, maxZoom:14, minZoom:5
-        }).fitBounds([[57.54,11.52],[57.87,12.34]]);
+        }).fitBounds([[57.585,11.55],[57.86,12.31]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -66,7 +64,6 @@
             primaryAreaUnit: 'sqmeters',
             secondaryAreaUnit: 'hectares'
         });
-        
         measureControl.addTo(map);
         document.getElementsByClassName('leaflet-control-measure-toggle')[0]
         .innerHTML = '';
@@ -89,7 +86,6 @@
             identify: false,
             attribution: '',
         });
-
         map.addLayer(layer_Stadskarta_0);
         function pop_Arkeologiskarapporter_1(feature, layer) {
             var popupContent = '<table>\
@@ -100,7 +96,7 @@
                         <td colspan="2"><strong>Rapportbeteckning</strong><br />' + (feature.properties['Rapportbet'] !== null ? autolinker.link(feature.properties['Rapportbet'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2"><strong>Titel</strong><br />' + (feature.properties['Titel rapp'] !== null ? autolinker.link(feature.properties['Titel rapp'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2"><strong>Titel</strong><br />' + (feature.properties['Titel'] !== null ? autolinker.link(feature.properties['Titel'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <td colspan="2"><strong>Länk till rapport</strong><br />' + (feature.properties['Länk till'] !== null ? autolinker.link(feature.properties['Länk till'].toLocaleString()) : '') + '</td>\
@@ -143,7 +139,6 @@
                 return L.circleMarker(latlng, style_Arkeologiskarapporter_1_0(feature));
             },
         });
-        
         var cluster_Arkeologiskarapporter_1 = new L.MarkerClusterGroup({showCoverageOnHover: true,
             spiderfyDistanceMultiplier: 2});
         cluster_Arkeologiskarapporter_1.addLayer(layer_Arkeologiskarapporter_1);
@@ -201,22 +196,25 @@
             },
         });
         var cluster_Bebyggelserapporter_2 = new L.MarkerClusterGroup({showCoverageOnHover: true,
-            spiderfyDistanceMultiplier: 1});
+            spiderfyDistanceMultiplier: 2});
         cluster_Bebyggelserapporter_2.addLayer(layer_Bebyggelserapporter_2);
 
         bounds_group.addLayer(layer_Bebyggelserapporter_2);
         cluster_Bebyggelserapporter_2.addTo(map);
+
+        var bothlayers = L.layerGroup([layer_Bebyggelserapporter_2, layer_Arkeologiskarapporter_1]);
+
         var baseMaps = {};
-        L.control.layers(baseMaps,{'<img src="legend/Bebyggelserapporter_2.png" /> Bebyggelserapporter': cluster_Bebyggelserapporter_2,'<img src="legend/Arkeologiskarapporter_1.png" /> Arkeologiska rapporter': cluster_Arkeologiskarapporter_1,"Stadskarta": layer_Stadskarta_0,}).addTo(map);
+        L.control.layers(baseMaps,{'<img src="legend/Bebyggelserapporter_2.png" /> Bebyggelserapporter': cluster_Bebyggelserapporter_2,'<img src="legend/Arkeologiskarapporter_1.png" /> Arkeologiska rapporter': cluster_Arkeologiskarapporter_1,"Stadskarta": layer_Stadskarta_0,})
+        .addTo(map);
         setBounds();
         map.addControl(new L.Control.Search({
-            layer: cluster_Arkeologiskarapporter_1,
+            layer: bothlayers,
             initial: false,
             hideMarkerOnCollapse: true,
-            propertyName: 'Titel rapp'}));
+            propertyName: 'Titel'}));
         document.getElementsByClassName('search-button')[0].className +=
          ' fa fa-binoculars';
-
         </script>
     </body>
 </html>
