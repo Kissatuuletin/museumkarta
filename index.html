@@ -201,9 +201,7 @@
 
         bounds_group.addLayer(layer_Bebyggelserapporter_2);
         cluster_Bebyggelserapporter_2.addTo(map);
-
         var bothlayers = L.layerGroup([cluster_Bebyggelserapporter_2, cluster_Arkeologiskarapporter_1]);
-
         var baseMaps = {};
         L.control.layers(baseMaps,{'<img src="legend/Bebyggelserapporter_2.png" /> Bebyggelserapporter': cluster_Bebyggelserapporter_2,'<img src="legend/Arkeologiskarapporter_1.png" /> Arkeologiska rapporter': cluster_Arkeologiskarapporter_1,"Stadskarta": layer_Stadskarta_0,}).addTo(map);
         setBounds();
@@ -213,7 +211,7 @@
             hideMarkerOnCollapse: true,
             propertyName: 'Titel'}));
         document.getElementsByClassName('search-button')[0].className +=
-         ' fa fa-binoculars';
+         ' fa fa-search';
         </script>
     </body>
 </html>
