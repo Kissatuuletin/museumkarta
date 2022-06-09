@@ -20,11 +20,11 @@
         }
         .leaflet-container {
             background: #fff;
-            padding-right: 6px;
+            padding-right: 10px;
         }
         .leaflet-popup-content {
             width:auto;
-            padding-right:6px;
+            padding-right:10px;
         }
         .leaflet-tooltip {
             background: none;
@@ -42,13 +42,13 @@
         .leaflet-control-locate a,
         .leaflet-touch .leaflet-control-geocoder-icon,
         .leaflet-control-search .search-button,
-         .leaflet-control-measure {
+        .leaflet-control-measure {
             background-color: #0e5657 !important;
             border-radius: 0px !important;
             color: #fbee66 !important;
         }
         .abstract {
-            font: bold 18px 'Motiva sans', Lucida Console, Monaco, monospace;
+            font: bold 18px 'Lucida Console', Monaco, monospace;
             text-indent: 1px;
             background-color: #0e5657 !important;
             width: 30px !important;
@@ -59,7 +59,7 @@
         }
         .abstractUncollapsed {
             padding: 6px 8px;
-            font: 12px/1.5 "Motiva sans", Helvetica Neue, Arial, Helvetica, sans-serif;
+            font: 12px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
             background-color:#0e5657 !important;
             color: #fbee66 !important;
             box-shadow: 0 0 15px rgba(0,0,0,0.2);
@@ -69,9 +69,7 @@
         .leaflet-touch .leaflet-control-layers,
         .leaflet-touch .leaflet-bar,
         .leaflet-control-search,
-        .leaflet-control-measure {
-            border: 3px solid rgba(255,255,255,.4) !important;
-        }
+
         .leaflet-control-attribution a {
             color: #0078A8 !important;
         }
@@ -108,8 +106,12 @@
             border-radius: 4px !important;
         }
         .leaflet-control-measure .leaflet-control-measure-interaction {
-            background-color: #0e5657 !important;
+            background-color: #fbee66 !important;
         }
+
+        .js-starthelp, .js-results, .results{color:#000}
+
+
         .leaflet-touch .leaflet-control-measure
         .leaflet-control-measure-toggle,
         .leaflet-touch .leaflet-control-measure
@@ -118,12 +120,67 @@
             height: 30px !important;
             border-radius: 0px !important;
             background-color: #0e5657 !important;
+            color: #000 !important;
+            font-size: 13px;
+            line-height: 30px;
+	        display: block;
+	        text-decoration: none;
+	        color: black;
+            text-align: center;
+            text-indent: 0%;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.65);
+	        border-radius: 4px;
+	        background-image: none;
+        }
+
+        .leaflet-control-measure-toggle:before {
+            width: 30px !important;
+            height: 30px !important;
+            border-radius: 0px !important;
+            background-color: #0e5657 !important;
             color: #fbee66 !important;
             font-size: 13px;
             line-height: 30px;
+	        display: block;
+	        text-decoration: none;
+	        color: black;
             text-align: center;
             text-indent: 0%;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.65);
+	        border-radius: 4px;
+	        background-image: none;
         }
+
+        .fas{
+            width: 30px !important;
+            height: 30px !important;
+            border-radius: 0px !important;
+            background-color: #0e5657 !important;
+            color: #fbee66 !important;
+            font-size: 13px;
+            line-height: 30px;
+	        display: block;
+	        text-decoration: none;
+	        color: black;
+            text-align: center;
+            text-indent: 0%;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.65);
+	        border-radius: 4px;
+	        background-image: none;
+        }
+
+        .leaflet-control-measure h3, .leaflet-measure-resultpopup h3{color:#000}
+
         .leaflet-control-layers-toggle {
             background-color: #0e5657 !important;
+            width: 30px !important;
+            height: 30px !important;
+        }
+
+
+
+
+        .leaflet-control-measure-interaction {
+            min-width: max-content;
+            min-height: max-content;
         }
