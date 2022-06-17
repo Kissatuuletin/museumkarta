@@ -99,7 +99,7 @@
                         <td colspan="2"><strong>Titel</strong><br />' + (feature.properties['Titel'] !== null ? autolinker.link(feature.properties['Titel'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2"><strong>Länk till rapport</strong><br />' + (feature.properties['Länk till'] !== null ? autolinker.link(feature.properties['Länk till'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2"><strong><center>' + (feature.properties['Länk till'] !== null ? ('<a href="' + feature.properties['Länk till'].toLocaleString() + '" target="_blank">Länk till rapport</a>') : '') + '</strong><br /></td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
